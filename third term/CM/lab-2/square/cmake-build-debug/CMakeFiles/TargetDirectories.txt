@@ -1,0 +1,3 @@
+C:/Users/pashk/Desktop/CM/lab-2/square/cmake-build-debug/CMakeFiles/square.dir
+C:/Users/pashk/Desktop/CM/lab-2/square/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/pashk/Desktop/CM/lab-2/square/cmake-build-debug/CMakeFiles/rebuild_cache.dir

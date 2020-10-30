@@ -1,0 +1,133 @@
+-- комплектуючі(індекс, назва, ціна)
+SpareParts = { 
+	spId:number, spName:string, spPrice:number
+	1, screw2x10mm, 1
+	2, accumulatorNiMH, 7
+	3, transistorD1555, 2
+}
+
+-- прилади(індекс, назва, ціна)
+Devices = {
+	devId:number, devName:string, price:number
+	1, smartphone, 500
+	2, headphones, 200
+	3, loudSpeaker, 230
+}
+
+-- реалізація відношення n:n між приладами та комплектуючими
+-- (індекс приладу, індекс комплектуючої, кількість комплектуючих для приладу)
+DeviceHasSpareParts = {
+	deviceId:number, sparePartId:number, partsCount:number
+	1, 1, 10
+	1, 3, 58
+	3, 1, 14
+	3, 2, 3
+	2, 3, 12
+}
+
+-- лінії збірки(індекс, місячна ціна обслуговування, кількість робочих годин в день)
+AssemblySites = {
+	asId:number, monthlyMaintenancePrice:number, DailyWorkHours:number
+	1, 30, 8
+	2, 45, 6
+	3, 25, 8
+}
+
+-- реалізація відношення n:n між лініями збірки та приладами
+-- (індекс лінії збірки, індекс приладу, кільність хвилин на збірку одного приладу)
+AssemblySiteHasDevice = {
+	assemblySiteId:number, asDeviceId:number, minutesToAssemble:number
+	1, 2, 20
+	1, 3, 18
+	2, 2, 60
+	3, 1, 15
+}
+-- 1
+/*
+γ deviceId;
+	sum(partsCount) -> partsCount
+	((DeviceHasSpareParts)⨝ spId = sparePartId (SpareParts))
+*/
+
+-- еквівалент 1
+/*
+γ deviceId;
+	sum(partsCount) -> partsCount
+	σ spId = sparePartId ((DeviceHasSpareParts) ⨯ (SpareParts))
+
+
+-- 2
+/*
+π
+	devName,
+	assemblySiteId,
+	minutesToAssemble
+τ devId asc
+	((AssemblySiteHasDevice)⨝ asDeviceId = devId (Devices))
+*/
+
+-- еквівалент 2
+/*
+π
+	assemblySiteId,
+	minutesToAssemble
+		τ devId asc
+		((AssemblySiteHasDevice)  asDeviceId = devId (π devId, devName (Devices)))
+*/
+
+-- 3
+/*
+π
+	devName,
+	spPrice,
+	partsCount
+τ deviceId asc
+	(((DeviceHasSpareParts)⨝ spId = sparePartId (SpareParts)) ⨝ deviceId = devId (Devices))
+*/
+
+-- еквівалент 3
+/*
+π
+	devName,
+	partsCount
+τ deviceId asc
+	(((DeviceHasSpareParts)) ⨝ spId = sparePartId (π spId, spPrice (SpareParts)) ⨝ deviceId = devId (Devices))
+*/
+
+-- 4
+/*
+π
+	devName,
+	asId
+τ asId asc
+	(((AssemblySiteHasDevice)⨝ assemblySiteId = asId (AssemblySites)) ⨝ devId = asDeviceId (Devices))
+*/
+
+-- еквівалент 4
+/*
+π
+	devName,
+  asId, 
+    monthlyMaintenancePrice
+    τ asId asc
+  	 	(((AssemblySiteHasDevice)⨝ assemblySiteId = asId (AssemblySites)) ⨝ devId = asDeviceId ((π devId, devName (Devices)))
+*/
+
+-- 5
+/*
+π
+	assemblySiteId,
+	spName
+τ assemblySiteId asc
+	((AssemblySiteHasDevice)⨝ devId = asDeviceId (((DeviceHasSpareParts)⨝ spId = sparePartId (SpareParts)) ⨝ deviceId = devId (Devices)))
+*/
+
+-- еквівалент 5
+/*
+π
+	assemblySiteId,
+	spName
+τ assemblySiteId asc
+	((AssemblySiteHasDevice)⨝ devId = asDeviceId (((DeviceHasSpareParts)⨝ spId = sparePartId (π spId, spName (SpareParts))) ⨝ deviceId = devId (Devices)))
+*/
+

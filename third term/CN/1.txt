@@ -1,0 +1,102 @@
+enable
+configure terminal
+enable secret class
+line console 0
+line vty 0 15
+vlan 10
+name vlan_10
+vlan 20
+name vlan_20
+vlan 30
+name vlan_30
+exit
+int fa0/23
+switchport mode trunk
+switchport access vlan 10
+switchport access vlan 20
+switchport access vlan 30
+no shutdown
+int fa0/24
+switchport mode trunk
+switchport access vlan 10
+switchport access vlan 20
+switchport access vlan 30
+no shutdown
+exit
+exit
+
+enable
+configure terminal
+int fa0/1
+switchport mode access
+switchport access vlan 3
+exit
+int fa0/2
+switchport mode access
+switchport access vlan 3
+exit
+int fa0/24
+switchport mode trunk
+switchport access vlan 3
+no shutdown
+exit
+
+enable
+configure terminal
+int fa0/1
+switchport mode access
+switchport access vlan 20
+exit
+int fa0/2
+switchport mode access
+switchport access vlan 30
+exit
+int fa0/3
+switchport mode access
+switchport access vlan 10
+exit
+int fa0/4
+switchport mode access
+switchport access vlan 30
+exit
+int fa0/24
+switchport mode trunk
+switchport access vlan 10
+switchport access vlan 20
+switchport access vlan 30
+no shutdown
+exit
+
+interface vlan 10
+ip address 172.17.10.13 255.255.255.0
+no shutdown
+ip default-gateway 172.17.10.1
+
+enable
+configure terminal
+interface fastEthernet 0/0
+ip address 10.10.8.0 255.255.255.22
+no shutdown
+exit
+interface Ethernet 1/0
+description --< link to LAN_11> --
+ip address 192.168.10.96 255.255.255.28
+no shutdown
+exit
+interface Ethernet 1/1
+description --< link to LAN_10> --
+ip address 192.168.10.48 255.255.255.28
+no shutdown
+exit
+
+interface Ethernet 1/2
+description --< link to LAN_9> --
+ip address 192.168.10.128 255.255.255.28
+no shutdown
+exit
+
+enable
+configure terminal
+ip route 10.10.8.0 255.255.255.0 192.168.10.128 1
+ip route 10.10.8.0 255.255.255.0 192.168.10.64 2
+exit

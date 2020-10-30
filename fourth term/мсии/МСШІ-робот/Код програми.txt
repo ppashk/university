@@ -1,0 +1,513 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+int main () {
+    srand( time( 0 ) );
+    int random_i = 0;
+    int random_j = 0;
+	char arr[5][5];
+	for(int i = 0; i < 5; i++) {
+		for(int j = 0; j < 5; j ++) {
+			arr[i][j] = '*';
+			cout << arr[i][j];
+			
+		}
+		
+		cout << '\n';
+	}
+	cout << '\n';
+	cout << '\n';
+
+
+		char pilesos = '1';
+		arr[1][1] = pilesos;
+
+//number of iterations
+
+	cout << '\n';
+	cout << '\n';
+
+cout << "Enter your num of iterations - ";
+
+int iterations = 0;
+
+cin >> iterations;
+
+ for(int k = 0; k < iterations; k++) {
+     
+//for1 
+    for(int j = 1; j < 5; j++){
+		    int i = 1;
+		    
+		    //randomiser for musor
+		        if(((rand() % 2)) == 1){
+		        random_i = ((rand() % 5));
+		        random_j = ((rand() % 5));
+		        arr[random_i][random_j] = '-';
+		        }
+		    
+			arr[i][j] = pilesos;
+			arr[i][j-1] = '*';
+			
+				for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 5;j ++) {
+						cout << arr[i][j];
+					}
+					cout << '\n';
+				}
+				cout << '\n';
+				cout << '\n';
+				
+			
+			// if
+			 if(arr[i - 1][j] == '-'){        //vverx
+			     arr[i][j] = '*';
+		        arr[i - 1] [j] =pilesos;
+		        
+		        for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 5;j ++) {
+						cout << arr[i][j];
+					}
+					cout << '\n';
+				}
+				cout << '\n';
+				cout << '\n';
+				arr[i -1] [j] = '*';
+				arr[i][j] =pilesos;
+				 for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 5;j ++) {
+						cout << arr[i][j];
+					}
+					cout << '\n';
+				}
+				cout << '\n';
+				cout << '\n';
+		    }
+		    
+		    // if
+		    if(arr[i + 1][j] == '-'){     //vniz
+			     arr[i][j] = '*';
+		        arr[i + 1] [j] =pilesos;
+		        
+		        for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 5;j ++) {
+						cout << arr[i][j];
+					}
+					cout << '\n';
+				}
+				cout << '\n';
+				cout << '\n';
+				arr[i + 1] [j] = '*';
+				arr[i][j] =pilesos;
+				 for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 5;j ++) {
+						cout << arr[i][j];
+					}
+					cout << '\n';
+				}
+				cout << '\n';
+				cout << '\n';
+		    }
+		    
+		    // if
+		    if(arr[i ][j -1] == '-'){     //vlevo
+			     arr[i][j] = '*';
+		        arr[i] [j -1] =pilesos;
+		        
+		        for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 5;j ++) {
+						cout << arr[i][j];
+					}
+					cout << '\n';
+				}
+				cout << '\n';
+				cout << '\n';
+				arr[i] [j - 1] = '*';
+				arr[i][j] =pilesos;
+				 for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 5;j ++) {
+						cout << arr[i][j];
+					}
+					cout << '\n';
+				}
+				cout << '\n';
+				cout << '\n';
+		    }
+		    
+		    
+		    //if retuns pilesos
+				if(j == 4)  {
+				arr[1][3] = pilesos;
+				arr[1][4] = '*';
+			for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 5;j ++) {
+						cout << arr[i][j];
+					}
+					cout << '\n';
+				}
+				cout << '\n';
+				cout << '\n';
+			}
+			
+			
+		    
+	}
+
+
+//for2
+    for(int i = 2; i < 5; i++){
+		    int j = 3;
+		    
+		    //randomiser		    
+		    if(((rand() % 2)) == 1){
+		    random_i = ((rand() % 5));
+		    random_j = ((rand() % 5));
+		    arr[random_i][random_j] = '-';
+		    }
+		    
+			arr[i][j] = pilesos;
+			arr[i - 1][j] = '*';
+				for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 5;j ++) {
+						cout << arr[i][j];
+					}
+					cout << '\n';
+				}
+				cout << '\n';
+				cout << '\n';
+				
+			
+			//if
+			if(arr[i - 1][j] == '-'){      //vverx
+			     arr[i][j] = '*';
+		        arr[i - 1] [j] =pilesos;
+		        
+		        for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 5;j ++) {
+						cout << arr[i][j];
+					}
+					cout << '\n';
+				}
+				cout << '\n';
+				cout << '\n';
+				arr[i -1] [j] = '*';
+				arr[i][j] =pilesos;
+				 for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 5;j ++) {
+						cout << arr[i][j];
+					}
+					cout << '\n';
+				}
+				cout << '\n';
+				cout << '\n';
+		    }
+		    
+		    
+		    //if
+		     if(arr[i ][j -1] == '-'){     //vlevo
+			     arr[i][j] = '*';
+		        arr[i] [j -1] =pilesos;
+		        
+		        for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 5;j ++) {
+						cout << arr[i][j];
+					}
+					cout << '\n';
+				}
+				cout << '\n';
+				cout << '\n';
+				arr[i] [j - 1] = '*';
+				arr[i][j] =pilesos;
+				 for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 5;j ++) {
+						cout << arr[i][j];
+					}
+					cout << '\n';
+				}
+				cout << '\n';
+				cout << '\n';
+		    }
+		    
+		    //if
+		     if(arr[i][j + 1] == '-'){     //vpravo
+			     arr[i][j] = '*';
+		        arr[i] [j + 1] =pilesos;
+		        
+		        for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 5;j ++) {
+						cout << arr[i][j];
+					}
+					cout << '\n';
+				}
+				cout << '\n';
+				cout << '\n';
+				arr[i] [j + 1] = '*';
+				arr[i][j] =pilesos;
+				 for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 5;j ++) {
+						cout << arr[i][j];
+					}
+					cout << '\n';
+				}
+				cout << '\n';
+				cout << '\n';
+		    }
+		    
+		    //if retuns pilesos
+		    if(i == 4)  {
+				arr[3][3] = pilesos;
+				arr[4][3] = '*';
+			
+			for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 5;j ++) {
+						cout << arr[i][j];
+					}
+					cout << '\n';
+				}
+				cout << '\n';
+				cout << '\n';
+			}
+		    
+	}
+			
+			
+//for3
+	for(int j = 2; j >= 0; j--){
+		    int i = 3;
+		    //randomiser		    
+		    if(((rand() % 2)) == 1){
+		    random_i = ((rand() % 5));
+		    random_j = ((rand() % 5));
+		    arr[random_i][random_j] = '-';
+		    }
+		    
+			arr[i][j] = pilesos;
+			arr[i][j + 1] = '*';
+				for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 5;j ++) {
+						cout << arr[i][j];
+					}
+					cout << '\n';
+				}
+				cout << '\n';
+				cout << '\n';
+				
+				 //if
+		     if(arr[i][j + 1] == '-'){     //vpravo
+			     arr[i][j] = '*';
+		        arr[i] [j + 1] =pilesos;
+		        
+		        for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 5;j ++) {
+						cout << arr[i][j];
+					}
+					cout << '\n';
+				}
+				cout << '\n';
+				cout << '\n';
+				arr[i] [j + 1] = '*';
+				arr[i][j] =pilesos;
+				 for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 5;j ++) {
+						cout << arr[i][j];
+					}
+					cout << '\n';
+				}
+				cout << '\n';
+				cout << '\n';
+		    }
+				
+				// if
+			 if(arr[i - 1][j] == '-'){        //vverx
+			     arr[i][j] = '*';
+		        arr[i - 1] [j] =pilesos;
+		        
+		        for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 5;j ++) {
+						cout << arr[i][j];
+					}
+					cout << '\n';
+				}
+				cout << '\n';
+				cout << '\n';
+				arr[i -1] [j] = '*';
+				arr[i][j] =pilesos;
+				 for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 5;j ++) {
+						cout << arr[i][j];
+					}
+					cout << '\n';
+				}
+				cout << '\n';
+				cout << '\n';
+		    }
+		    
+		    // if
+		    if(arr[i + 1][j] == '-'){     //vniz
+			     arr[i][j] = '*';
+		        arr[i + 1] [j] =pilesos;
+		        
+		        for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 5;j ++) {
+						cout << arr[i][j];
+					}
+					cout << '\n';
+				}
+				cout << '\n';
+				cout << '\n';
+				arr[i + 1] [j] = '*';
+				arr[i][j] =pilesos;
+				 for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 5;j ++) {
+						cout << arr[i][j];
+					}
+					cout << '\n';
+				}
+				cout << '\n';
+				cout << '\n';
+		    }
+				
+		    //if retuns pilesos
+				if(j == 0)  {
+				arr[3][1] = pilesos;
+				arr[3][0] = '*';
+			for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 5;j ++) {
+						cout << arr[i][j];
+					}
+					cout << '\n';
+				}
+				cout << '\n';
+				cout << '\n';
+	}
+	}
+	
+	
+//for4
+	for(int i = 2; i >= 0; i--){
+		    int j = 1;
+		    //randomiser		    
+		    if(((rand() % 2)) == 1){
+		    random_i = ((rand() % 5));
+		    random_j = ((rand() % 5));
+		    arr[random_i][random_j] = '-';
+		    }
+		    
+			arr[i][j] = pilesos;
+			arr[i + 1][j] = '*';
+				for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 5;j ++) {
+						cout << arr[i][j];
+					}
+					cout << '\n';
+				}
+				cout << '\n';
+				cout << '\n';
+				
+			//if
+		     if(arr[i ][j -1] == '-'){     //vlevo
+			     arr[i][j] = '*';
+		        arr[i] [j -1] =pilesos;
+		        
+		        for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 5;j ++) {
+						cout << arr[i][j];
+					}
+					cout << '\n';
+				}
+				cout << '\n';
+				cout << '\n';
+				arr[i] [j - 1] = '*';
+				arr[i][j] =pilesos;
+				 for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 5;j ++) {
+						cout << arr[i][j];
+					}
+					cout << '\n';
+				}
+				cout << '\n';
+				cout << '\n';
+		    }	
+				
+				 //if
+		     if(arr[i][j + 1] == '-'){     //vpravo
+			     arr[i][j] = '*';
+		        arr[i] [j + 1] =pilesos;
+		        
+		        for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 5;j ++) {
+						cout << arr[i][j];
+					}
+					cout << '\n';
+				}
+				cout << '\n';
+				cout << '\n';
+				arr[i] [j + 1] = '*';
+				arr[i][j] =pilesos;
+				 for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 5;j ++) {
+						cout << arr[i][j];
+					}
+					cout << '\n';
+				}
+				cout << '\n';
+				cout << '\n';
+		    }
+				
+				//if
+				if(arr[i + 1][j] == '-'){     //vniz
+			     arr[i][j] = '*';
+		        arr[i + 1] [j] =pilesos;
+		        
+		        for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 5;j ++) {
+						cout << arr[i][j];
+					}
+					cout << '\n';
+				}
+				cout << '\n';
+				cout << '\n';
+				arr[i + 1] [j] = '*';
+				arr[i][j] =pilesos;
+				 for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 5;j ++) {
+						cout << arr[i][j];
+					}
+					cout << '\n';
+				}
+				cout << '\n';
+				cout << '\n';
+		    }
+				
+				
+		        //if retuns pilesos
+				if(i == 0)  {
+				arr[1][1] = pilesos;
+				arr[0][1] = '*';
+			
+			for(int i = 0; i < 5; i++) {
+					for(int j = 0; j < 5;j ++) {
+						cout << arr[i][j];
+					}
+					cout << '\n';
+				}
+				cout << '\n';
+				cout << '\n';
+	}
+    }
+
+
+}
+
+
+    int count = 0;
+        for (int i = 0; i < 5; i++) {
+					for (int j = 0; j < 5;j ++) {
+					    if (arr[i][j] == '-') count++;
+ } 
+}
+	cout << '\n';
+	cout << '\n';
+    cout << "final iteration after - " << iterations << " iterations you have - " << count << " trash";
+}
