@@ -5,33 +5,33 @@ from urllib import request
 from nltk import word_tokenize
 from nltk.corpus import brown
 from bs4 import BeautifulSoup
-
-s = 'colorless'
-s = s[:4] + 'u' + s[4:]
-print(s, '\n')
-
-dish = 'dishes'[:-2]
-run = 'running'[:-4]
-nation = 'nationality'[:-5]
-do = 'undo'[2:]
-heat = 'preheat'[3:]
-print()
-
-print('s[-(len(s)+1)]\n')
-
-monty = 'Monty Python'
-print(monty[::-1])
-
-re_a = r'(\ban?\b|\bthe\b)'
-re_b = r'[\d\*\+]+'
-print()
-
+#
+# s = 'colorless'
+# s = s[:4] + 'u' + s[4:]
+# print(s, '\n')
+#
+# dish = 'dishes'[:-2]
+# run = 'running'[:-4]
+# nation = 'nationality'[:-5]
+# do = 'undo'[2:]
+# heat = 'preheat'[3:]
+# print()
+#
+# print('s[-(len(s)+1)]\n')
+#
+# monty = 'Monty Python'
+# print(monty[::-1])
+#
+# re_a = r'(\ban?\b|\bthe\b)'
+# re_b = r'[\d\*\+]+'
+# print()
+#
 # def content_of_URL(URL):
 #     html = request.urlopen(URL).read().decode('utf8')
-#     raw = BeautifulSoup(html).get_text()
+#     raw = BeautifulSoup(html, features='html.parser').get_text()
 #     tokens = word_tokenize(raw)
 #     return tokens
-#
+# print(content_of_URL('https://ru.wikipedia.org/'))
 # def load_punctuations(f):
 #     file = open(f)
 #     raw = file.read()
@@ -45,7 +45,7 @@ print()
 #       | [，。？！、‘：；]       # some Chinese punctuations
 #     '''
 #     return nltk.regexp_tokenize(raw, pattern)
-# load_punctuations('resources/recorpus.txt')
+# print(load_punctuations('resources/recorpus.txt'))
 #
 # def load_monetary(f):
 #     file = open(f)
@@ -53,10 +53,10 @@ print()
 #     pattern = r'''(?x)
 #         \$\d+(?:,\d+)*(?:\.\d+)?      # USD
 #       | £\d+(?:,\d+)*(?:\.\d+)?       # GBP
-#       | ￥\d+(?:\.\d+)?               # CNY
+#       | ￥\d+(?:,\d+)*(?:\.\d+)?      # CNY
 #     '''
 #     return nltk.regexp_tokenize(raw, pattern)
-# load_monetary('resources/corpus.txt')
+# print(load_monetary('resources/corpus.txt'))
 #
 # def load_date(f):
 #     file = open(f)
@@ -101,27 +101,27 @@ print()
 # lowers = re.findall(r'[a-z]+', file)
 # unknowns = [w for w in lowers[:100] if w not in nltk.corpus.words.words()]
 # print(unknowns)
-
-pattern = r"\w+(?:'t)?"
-
-s = []
-for i in range(500):
-    s.append(random.choice("aehh "))
-ori = ''.join(s)
-print(' '.join(ori.split()), '\n')
-
-def miu_w(category):
-    word_length = sum(len(w) for w in brown.words(categories=category))
-    word_number = len(brown.words(categories=category))
-    return word_length / word_number
-
-def miu_s(category):
-    sent_length = sum(len(s) for s in brown.sents(categories=category))
-    sent_number = len(brown.sents(categories=category))
-    return sent_length / sent_number
-
-def ari(category):
-    return 4.71 * miu_w(category) + 0.5 * miu_s(category) - 21.43
-
-for category in brown.categories():
-    print(category, ari(category))
+#
+# pattern = r"\w+(?:'t)?"
+#
+# s = []
+# for i in range(500):
+#     s.append(random.choice("aehh "))
+# ori = ''.join(s)
+# print(' '.join(ori.split()), '\n')
+#
+# def miu_w(category):
+#     word_length = sum(len(w) for w in brown.words(categories=category))
+#     word_number = len(brown.words(categories=category))
+#     return word_length / word_number
+#
+# def miu_s(category):
+#     sent_length = sum(len(s) for s in brown.sents(categories=category))
+#     sent_number = len(brown.sents(categories=category))
+#     return sent_length / sent_number
+#
+# def ari(category):
+#     return 4.71 * miu_w(category) + 0.5 * miu_s(category) - 21.43
+#
+# for category in brown.categories():
+#     print(category, ari(category))
